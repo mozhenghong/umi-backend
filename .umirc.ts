@@ -1,7 +1,7 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
-    base: '/docs/',
+    base: '/',
     publicPath: '/static/',
     hash: true,
     history: {
@@ -18,6 +18,7 @@ export default defineConfig({
           routes: [
             { path: '/home', component: '@/pages/home/index' },
             { path: '/admin', component: '@/pages/index' },
+            { path: '/page1', component: '@/pages/page1/index' },
           ],
         }, 
     ],

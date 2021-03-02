@@ -1,5 +1,5 @@
 export default {
-    base: '/docs/',
+    base: '/',
     publicPath: '/static/',
     hash: true,
     history: {
