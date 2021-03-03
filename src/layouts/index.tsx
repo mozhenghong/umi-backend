@@ -8,6 +8,7 @@ import { Provider } from 'mobx-react';
 import {store} from '@/store/index';
 export default (props:any) => {
     return <Provider store={store}>
+        {JSON.stringify(store)}
             <div className="App">
                 <Row className="container">
                     <Col span={4} className="nav-left">
