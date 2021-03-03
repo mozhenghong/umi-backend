@@ -9,7 +9,7 @@ const menuList = [
         children:[
             {
                 title:"页面11",
-                key:"/admin"
+                key:"/page2"
             },
             {
                 title:"页面12",

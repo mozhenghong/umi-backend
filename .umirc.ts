@@ -11,13 +11,13 @@ export default defineConfig({
         type: 'none',
     },
     routes: [
-        { path: '/login', component: '@/pages/index' },
+        { path: '/login', component: '@/pages/page2/index' },
         {
           path: '/',
           component: '@/layouts/index',
           routes: [
             { path: '/home', component: '@/pages/home/index' },
-            { path: '/admin', component: '@/pages/index' },
+            { path: '/page2', component: '@/pages/page2/index' },
             { path: '/page1', component: '@/pages/page1/index' },
           ],
         }, 
