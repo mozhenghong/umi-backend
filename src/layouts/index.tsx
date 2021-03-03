@@ -4,11 +4,11 @@ import './index.less';
 import NavLeft from '@/components/navLeft/index'
 import Header from '@/components/header/index'
 import Footer from '@/components/footer/index'
-import { Provider } from 'mobx-react';
+// import { Provider } from 'mobx-react';
+import { Provider } from '@/store/context';
 import {store} from '@/store/index';
 export default (props:any) => {
-    return <Provider store={store}>
-        {JSON.stringify(store)}
+    return <Provider>
             <div className="App">
                 <Row className="container">
                     <Col span={4} className="nav-left">

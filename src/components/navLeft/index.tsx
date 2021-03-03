@@ -36,7 +36,6 @@ const Index = (props:any) => {
     return (
         <div className="wrapper">
             <div className="logo">
-                <img src="/assets/logo-ant.svg" alt=""/>
                 <h1>系统</h1>   
             </div>
             <Menu className="menu" theme="dark" defaultOpenKeys={['/admin']}  mode="inline">
