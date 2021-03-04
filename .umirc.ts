@@ -2,13 +2,29 @@ import { defineConfig } from 'umi';
 
 export default defineConfig({
     base: '/',
-    publicPath: '/static/',
+    // publicPath: '/static/',
     hash: true,
     history: {
       type: 'hash',
     },
     nodeModulesTransform: {
         type: 'none',
+    },
+    theme: {
+        'primary-color': '#FF8899',
+    },
+    favicon: '/public/favicon.ico',
+    title: 'hi',
+    // define: {
+    //     APP_MARK: 'TOCPhysical,Admin',
+    //     PRODUCT_NAME: '哈哈哈哈',
+    // },
+    publicPath: './',
+    manifest: {
+      basePath: './',
+    },
+    targets: {
+      ie: 11,
     },
     routes: [
         { path: '/login', component: '@/pages/page2/index' },
