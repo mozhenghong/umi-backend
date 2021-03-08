@@ -24,6 +24,8 @@
     "@umijs/preset-react": "1.x",
     "mobx": "^6.1.8",
     "mobx-react": "^7.1.0",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^11.0.1",
     "umi": "^3.3.9"
   },
   "devDependencies": {

@@ -32,6 +32,7 @@ export default defineConfig({
           path: '/',
           component: '@/layouts/index',
           routes: [
+            { path: '/', redirect: '/login' },
             { path: '/home', component: '@/pages/home/index' },
             { path: '/page2', component: '@/pages/page2/index' },
             { path: '/page1', component: '@/pages/page1/index' },
