@@ -1,4 +1,9 @@
+
 const menuList = [
+    {
+      title: "工作台",
+      key: '/home',
+    },  
     {
         title: "首页",
         key: '/home'

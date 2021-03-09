@@ -15,7 +15,7 @@ const LoginPage = () => {
     }, []);
     const onFinish = (values: any) => {
         console.log('Received values of form: ', values);
-      };
+    };
     return (
         <div className={styles.wrap}>
             <div className={styles.title}>
