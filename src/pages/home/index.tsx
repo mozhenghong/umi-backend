@@ -9,16 +9,16 @@ export default function IndexPage() {
       <h1 className={styles.title}>home</h1>
       <Button onClick ={
             () => {
-                // history.push('/list?a=b');
-                history.push({
-                    pathname: '/admin',
-                    query: {
-                        a: 'b',
-                    },
-                });
-                getInfo({}).then((res) =>{
+                history.push('/page2');
+                // history.push({
+                //     pathname: '/page2',
+                //     query: {
+                //         a: 'b',
+                //     },
+                // });
+                // getInfo({}).then((res) =>{
                     
-                })
+                // })
         }
       }>跳转</Button>
     </div>
