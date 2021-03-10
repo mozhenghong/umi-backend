@@ -2,7 +2,7 @@
 const menuList = [
     {
       title: "工作台",
-      key: '/home',
+      key: '/orderPage',
     },  
     {
         title: "首页",
@@ -13,11 +13,7 @@ const menuList = [
         key: "/admin",
         children:[
             {
-                title:"页面11",
-                key:"/page2"
-            },
-            {
-                title:"页面12",
+                title:"子页面1",
                 key:"/page1"
             },
         ]
