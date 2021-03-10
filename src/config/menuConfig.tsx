@@ -3,6 +3,10 @@ const menuList = [
     {
       title: "工作台",
       key: '/orderPage',
+    }, 
+    {
+      title: "工作台医生",
+      key: '/orderPageDoctor',
     },  
     {
         title: "首页",
