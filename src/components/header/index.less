@@ -1,18 +1,68 @@
-.avator{
+.avator {
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
-.header{
-    background-color: white;
-    width: 100%;
-    .headerTop{
-        height: 60px;
-        line-height: 60px;
-        padding: 0 20px;
-        a{
-            margin-left: 40px;
-        }
-        text-align: right;
+
+.header {
+  background-color: white;
+  width: 100%;
+
+  .headerTop {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+
+    .headerItem {
+      text-align: right;
     }
+    .ant-dropdown{
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+  }
+}
+
+.pwdStrength {
+  width: 100%;
+  display: flex;
+  flex: 1;
+}
+
+.weak,
+.middle,
+.strong {
+  font-size: 12px;
+  width: 33%;
+  border: 1px solid black;
+  background: rgb(238, 238, 238);
+  text-align: center;
+}
+
+.weak {
+  background: red;
+}
+
+.middle,
+.weak {
+  margin-right: 5px;
+}
+.dropDownWrap{
+  .title{
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .mainWrap{
+    max-height: 300px;
+    overflow: scroll;
+  }
+  .patientItem{
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
 }
