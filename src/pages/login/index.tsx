@@ -15,6 +15,7 @@ const LoginPage = () => {
     }, []);
     const onFinish = (values: any) => {
         console.log('Received values of form: ', values);
+        history.push('/orderPage')
     };
     return (
         <div className={styles.wrap}>

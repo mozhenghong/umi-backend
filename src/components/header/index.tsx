@@ -85,9 +85,9 @@ const Index = (props: any) => {
   return (
     <div className={styles.header}>
       <Row className={styles.headerTop}>
-        <Col span="8">
+        <Col span="4">
         </Col>
-        <Col span="8">
+        <Col span="16" className={styles.searchwrap}>
           <Dropdown 
             overlay={menu} 
             placement="bottomCenter"  
@@ -98,7 +98,7 @@ const Index = (props: any) => {
             <Input
               prefix={<SearchOutlined className="site-form-item-icon" />}
               placeholder="请输入姓名/手机号"
-              style={{ width: 300 }}
+              style={{ width: '60%' }}
               allowClear
               onChange={(e) => {
                 console.log('inputchange')
@@ -140,7 +140,7 @@ const Index = (props: any) => {
           </Dropdown>
           <Button icon={<PlusOutlined />}>新增患者</Button>
         </Col>
-        <Col span="8" className={styles.headerItem}>
+        <Col span="4" className={styles.headerItem}>
           <Popover placement="bottomRight" content={content} title="" trigger="hover">
             <img src={avator} alt="" className={styles.avator} />
           </Popover>
