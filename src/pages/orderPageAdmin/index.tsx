@@ -15,7 +15,7 @@ const OrderPage = () => {
   const [pageIndex, setPageIndex] = useState(1)
   const [pageSize, setPageSize] = useState(10)
   const [pageTotal, setPageTotal] = useState(100)
-  const [addOrderVisibe, setAddOrderVisibe] = useState(true)
+  const [addOrderVisibe, setAddOrderVisibe] = useState(false)
 
   useEffect(() => {
     const data = []

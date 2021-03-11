@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Col, Row, Button, Modal, Form, Input, Select, Upload, DatePicker, Radio, message, Collapse,Checkbox} from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import styles from './index.less';
+import moment from 'moment'
 
 const { TextArea } = Input;
 const { Panel } = Collapse;
@@ -189,7 +190,14 @@ const AddPatient: React.FC<Visible> = (props) => {
                   label="预约时间"
                   name="year"
                 >
-                  <DatePicker />
+                  <DatePicker   
+                    showTime 
+                    format="YYYY-MM-DD HH:mm" 
+                    minuteStep={15}
+                    disabledDate={(currentDate)=>{
+                      return moment(currentDate).valueOf()< moment(new Date()).valueOf()
+                    }}
+                  />
                 </Form.Item>
                 <Form.Item
                   name="provience"
