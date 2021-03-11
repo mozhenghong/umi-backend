@@ -3,7 +3,8 @@ import { Col, Row, Popover, Button, Modal, Form, Input, Dropdown, Menu } from 'a
 import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
 import styles from './index.less';
 import { history } from 'umi';
-import avator from '@/assets/logo.png'
+import avator from '@/assets/logo.png';
+import AddPatient from './component/addPatient/index';
 
 interface PatientItemProps{
   name: string,
@@ -17,6 +18,7 @@ const Index = (props: any) => {
   const [strong, setStrong] = useState(1);
   const [dropVisibe, setDropVisibe] = useState(false);
   const [patientData, setPatientData] = useState<PatientItemProps[]>([]);
+  const [addPatientVisibe, setAddPatientVisibe] = useState(true);
 
   const content = (
     <div>
@@ -138,7 +140,14 @@ const Index = (props: any) => {
               }}
             />
           </Dropdown>
-          <Button icon={<PlusOutlined />}>新增患者</Button>
+          <Button 
+            icon={<PlusOutlined />} 
+            onClick={() => {
+              setAddPatientVisibe(true)
+            }}
+          >
+            新增患者
+          </Button>
         </Col>
         <Col span="4" className={styles.headerItem}>
           <Popover placement="bottomRight" content={content} title="" trigger="hover">
@@ -221,6 +230,12 @@ const Index = (props: any) => {
           </Form.Item>
         </Form>
       </Modal>
+      <AddPatient 
+        visible={addPatientVisibe} 
+        changeVisible={(visible:boolean) => {
+          setAddPatientVisibe(visible)
+        }}
+      />
     </div>
   );
 }
