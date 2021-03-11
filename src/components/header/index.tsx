@@ -18,7 +18,7 @@ const Index = (props: any) => {
   const [strong, setStrong] = useState(1);
   const [dropVisibe, setDropVisibe] = useState(false);
   const [patientData, setPatientData] = useState<PatientItemProps[]>([]);
-  const [addPatientVisibe, setAddPatientVisibe] = useState(true);
+  const [addPatientVisibe, setAddPatientVisibe] = useState(false);
 
   const content = (
     <div>
