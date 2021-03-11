@@ -90,7 +90,16 @@ const AddPatient: React.FC<Visible> = (props) => {
       <div className={styles.wrap}>
         <div className={styles.title}>个人信息</div>
         <div className={styles.detail}>
-          <Form form={form} name="add-patient" onFinish={onFinish} {...layout}>
+          <Form 
+            form={form} 
+            name="add-patient" 
+            onFinish={onFinish} 
+            {...layout}
+            initialValues={{
+              'name': 'llllll',
+              'sex':'b',
+            }}
+          >
             <Row>
               <Col span="12">
                 <Form.Item
@@ -133,7 +142,7 @@ const AddPatient: React.FC<Visible> = (props) => {
               <Col span="7">
                 <Form.Item
                   label="性别 "
-                  name="name"
+                  name="sex"
                 >
                   <Radio.Group>
                     <Radio value="a">男</Radio>
