@@ -4,8 +4,10 @@ import styles from './index.less';
 import moment from 'moment';
 import locale from 'antd/es/date-picker/locale/zh_CN';
 
+import AddOrder from './component/addOrder/index'
+
 import logoSrc from '@/assets/logo.png';
-import columns from './table/column'
+import columns from './table/column';
 
 const OrderPage = () => {
   const [form] = Form.useForm();
@@ -13,6 +15,7 @@ const OrderPage = () => {
   const [pageIndex, setPageIndex] = useState(1)
   const [pageSize, setPageSize] = useState(10)
   const [pageTotal, setPageTotal] = useState(100)
+  const [addOrderVisibe, setAddOrderVisibe] = useState(true)
 
   useEffect(() => {
     const data = []
@@ -116,7 +119,7 @@ const OrderPage = () => {
         </div>
         <div className={styles.tableTitleWrap}>
           <div className={styles.tableTitle}>预约列表</div>
-          <Button>新建预约</Button>
+          <Button onClick={() =>{setAddOrderVisibe(true)}}>新建预约</Button>
         </div>
         <div className={styles.tableWrap}>
           <Table 
@@ -138,6 +141,12 @@ const OrderPage = () => {
             }}
           />
         </div>
+        <AddOrder 
+          visible={addOrderVisibe} 
+          changeVisible={(visible:boolean) => {
+            setAddOrderVisibe(visible)
+          }}
+        />
     </div>
   )
 }
