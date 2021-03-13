@@ -1,5 +1,5 @@
 import React from 'react';
-import logoSrc from '@/assets/logo.png';
+import logoSrc from '@/assets/login/logo.png';
 
 const columns = [
   {
@@ -99,13 +99,15 @@ const columns = [
     dataIndex: 'address',
     key: '7',
     width: 150,
-    render: () => {
+    render: (record) => {
       return (
         <img 
           src={logoSrc} 
           alt="" 
           style={{width: 20, height: 20}}
-          onClick={() => {}}
+          onClick={() => {
+            console.log(record)
+          }}
         />
       )
     }

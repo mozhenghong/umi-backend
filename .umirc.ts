@@ -11,7 +11,7 @@ export default defineConfig({
         type: 'none',
     },
     theme: {
-        'primary-color': '#FF8899',
+        'primary-color': '#1890FF',
     },
     favicon: '/public/favicon.ico',
     title: 'hi',
@@ -29,7 +29,6 @@ export default defineConfig({
     routes: [
         { path: '/login', component: '@/pages/login/index' },
         { path: '/register', component: '@/pages/register/index' },
-        { path: '/registerSuccess', component: '@/pages/registerSuccess/index' },
         {
           path: '/',
           component: '@/layouts/index',

@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import styles from './index.less';
+import './index.less';
 import { Form, Input, Button, Select, Upload, Modal, Row, Col } from 'antd';
 import { history } from 'umi';
-import logoSrc from '@/assets/logo.png';
+import logoSrc from '@/assets/login/logo.png';
+import getcodeSrc from '@/assets/login/getcode.png';
+
 
 const { Option } = Select;
 const { Search } = Input;
 import { PlusOutlined } from '@ant-design/icons';
+
+const layout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
+};
+
+const tailLayout = {
+  wrapperCol: { offset: 8, span: 16 },
+};
 
 function getBase64(file: any) {
   return new Promise((resolve, reject) => {
@@ -22,7 +33,7 @@ const registerPage = () => {
   const [previewTitle, setPreviewTitle] = useState('')
   const [fileList, setFileList] = useState([])
   const [isAccess, setIsAccess] = useState(true)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   const onFinish = (values: any) => {
     console.log('Rregister', values);
@@ -54,17 +65,24 @@ const registerPage = () => {
     </div>
   );
   return (
-    <div className={styles.wrap}>
-      <div className={styles.title}>
+    <div className="register-wrap">
+      <div className="title">
         <img src={logoSrc} alt="" />
         <span>智慧诊所平台</span>
       </div>
-      <div className={styles.contentWrap}>
-        <Form name="register-form" onFinish={onFinish} style={{ minWidth: '30%' }}>
-          <Form.Item label="" name="name">
-            <Input placeholder="请输入所名称" />
+      <div className="contentWrap">
+        <div className="formWrap">
+        <Form 
+          name="register-form" 
+          onFinish={onFinish} 
+          className="registerForm"
+          {...layout}
+        >
+        <div className="registerTitle">申请开通账号</div>
+          <Form.Item label="诊所名称" name="name">
+            <Input placeholder="请输入诊所名称" />
           </Form.Item>
-          <Form.Item label="" style={{ marginBottom: 0 }}>
+          <Form.Item label="所在省市" style={{ marginBottom: 0 }}>
             <Form.Item
               name="year"
               rules={[{ required: true }]}
@@ -84,43 +102,45 @@ const registerPage = () => {
               </Select>
             </Form.Item>
           </Form.Item>
-          <Form.Item label="" name="address">
+          <Form.Item label="详细地址" name="address">
             <Input placeholder="请输入详细地址 " />
           </Form.Item>
-          <Form.Item label="" name="applyname">
+          <Form.Item label="申请人姓名" name="applyname">
             <Input placeholder="请输入申请人姓名" />
           </Form.Item>
-          <Form.Item label="" name="mobile"
+          <Form.Item label="申请人手机号" name="mobile"
             rules={[{
               pattern: /^1[3|4|5|7|8][0-9]\d{8}$/, message: '请输入正确的手机号'
             }]}>
             <Input placeholder="请输入申请人手机号" />
           </Form.Item>
-          <Form.Item label="" style={{ display: 'flex' }}>
+          <Form.Item label="图形验证码" style={{ display: 'flex' }}>
             <Form.Item
               name="picNum"
               noStyle
               rules={[{ required: true, message: 'Username is required' }]}
             >
-              <Input style={{ width: '70%' }} placeholder="请输入验证码" />
+              <Input style={{ width: '75%' }} placeholder="请输入验证码" />
             </Form.Item>
             <span>
-              <img src={logoSrc} alt="" style={{ width: 40, height: 20 }} />
+              <img src={logoSrc} alt="" style={{ width: 95, height: 32}} />
             </span>
           </Form.Item>
-          {isAccess && <Form.Item label="" name="msgNum">
+          {isAccess && <Form.Item label="短信验证码" name="msgNum">
             <Search
-              placeholder="输入短信中的验证码"
+              className="search"
+              placeholder="请输入短信中的验证码"
               enterButton="获取验证码"
               onSearch={(value) => { console.log(value) }}
             />
-          </Form.Item>}
-          <Form.Item label="" name="merchant">
+            </Form.Item>
+          }
+          <Form.Item label="营业执照机构名称" name="merchant">
             <Input placeholder="请输入营业执照机构名称" />
           </Form.Item>
           <Form.Item
             name="upload"
-            label=""
+            label="诊所营业执照"
           >
             <Upload
               action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -140,8 +160,8 @@ const registerPage = () => {
               <img alt="example" style={{ width: '100%' }} src={previewImage} />
             </Modal>
           </Form.Item>
-          <Form.Item label="">
-            <Button>
+          <Form.Item {...tailLayout}>
+            <Button style={{marginRight:'20px'}}>
               取消
             </Button>
             <Button type="primary" htmlType="submit">
@@ -149,19 +169,26 @@ const registerPage = () => {
             </Button>
           </Form.Item>
         </Form>
+        </div>
       </div>
       <Modal
         title="信息确认"
         visible={visible}
         onOk={handleConfirmOk}
         onCancel={handleConfirmCancel}
+        closable = {false}
+        centered
+        className="register-confirm"
+        width={610}
         footer={
           <div>
-            <Button>否</Button>
+            <Button style={{marginRight: '16px'}}>否</Button>
             <Button
-              type="primary" onClick={() => {
-                history.push('/registerSuccess')
-              }}>是</Button>
+              type="primary"
+              style={{marginRight: '-16px'}} 
+              onClick={() => {
+              }}
+              >是</Button>
           </div>
         }
       >

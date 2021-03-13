@@ -4,7 +4,7 @@ import styles from './index.less';
 import moment from 'moment';
 import locale from 'antd/es/date-picker/locale/zh_CN';
 
-import logoSrc from '@/assets/logo.png';
+import logoSrc from '@/assets/login/logo.png';
 import columns from './table/column'
 
 const OrderPage = () => {

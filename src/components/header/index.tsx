@@ -3,7 +3,7 @@ import { Col, Row, Popover, Button, Modal, Form, Input, Dropdown, Menu } from 'a
 import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
 import styles from './index.less';
 import { history } from 'umi';
-import avator from '@/assets/logo.png';
+import avator from '@/assets/login/logo.png';
 import AddPatient from './component/addPatient/index';
 
 interface PatientItemProps{
