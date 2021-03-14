@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   font-family: PingFangSC-Light, PingFang SC;
+  font-size: 14px;
   .title {
     padding-left: 165px;
     padding-bottom: 18px;
@@ -62,5 +63,55 @@
 .register-confirm{
   .ant-modal-content{
     padding: 0 30px;
+    .ant-modal-body{
+      padding: 24px 0;
+    }
+  }
+  .confirm-content-wrap{
+    display: flex;
+    padding-bottom: 26px;
+    .confirm-label{
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.25);
+      width: 40%;
+      text-align: right;
+    }
+    .confirm-content{
+      display: inline-block;
+      width: 60%;
+    }
+  }
+  .confirm-message{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.85);
+    padding: 29px 0 0 24px;
+  }
+}
+.tips-modal{
+  .tips-title-wrap{
+    display: flex;
+    align-items: center;
+    .tips-title{
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.85);
+      padding-left: 16px;
+    }
+  }
+  .tips-content{
+    color: rgba(0, 0, 0, 0.65);
+    padding: 12px 8px 0 40px;
+  }
+  .tips-content-success{
+    color: rgba(0, 0, 0, 0.65);
+    padding: 12px 8px 0 8px;
+  }
+  .tips-footer{
+    display: flex;
+    justify-content: flex-end;
+    padding: 24px 8px 0 0;
   }
 }

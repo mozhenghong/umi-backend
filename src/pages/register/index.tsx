@@ -3,7 +3,7 @@ import './index.less';
 import { Form, Input, Button, Select, Upload, Modal, Row, Col } from 'antd';
 import { history } from 'umi';
 import logoSrc from '@/assets/login/logo.png';
-import getcodeSrc from '@/assets/login/getcode.png';
+import warningSrc from '@/assets/login/warning.png';
 
 
 const { Option } = Select;
@@ -33,7 +33,10 @@ const registerPage = () => {
   const [previewTitle, setPreviewTitle] = useState('')
   const [fileList, setFileList] = useState([])
   const [isAccess, setIsAccess] = useState(true)
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
+  const [tipsVisible, setTipsVisible] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+
 
   const onFinish = (values: any) => {
     console.log('Rregister', values);
@@ -182,30 +185,70 @@ const registerPage = () => {
         width={610}
         footer={
           <div>
-            <Button style={{marginRight: '16px'}}>否</Button>
+            <Button style={{marginRight: '16px'}}  onClick={()=>{setVisible(false)}}>否</Button>
             <Button
               type="primary"
               style={{marginRight: '-16px'}} 
               onClick={() => {
+                setVisible(false)
+                setTipsVisible(true)
               }}
               >是</Button>
           </div>
         }
       >
         <Row>
-          <Col span={12}>诊所名称：XXXXXX诊所</Col>
-          <Col span={12}>地址：浙江省杭州市拱墅区泰嘉园B313</Col>
+          <Col span={12}  className="confirm-content-wrap">
+            <span className="confirm-label">诊所名称：</span> 
+            <span className="confirm-content">XXXXXX诊所</span>
+          </Col>
+          <Col span={12} className="confirm-content-wrap">
+            <span className="confirm-label">地址：</span>
+            <span className="confirm-content">浙江省杭州市拱墅区泰嘉园B313</span>  
+          </Col>
         </Row>
         <Row>
-          <Col span={12}>申请人姓名：张三</Col>
-          <Col span={12}>申请人手机号：1351234567</Col>
+          <Col span={12} className="confirm-content-wrap">
+            <span className="confirm-label">申请人姓名：</span>
+            <span className="confirm-content">XXXXXX诊所</span>
+          </Col>
+          <Col span={12} className="confirm-content-wrap">
+            <span className="confirm-label">申请人手机号：</span>
+            <span className="confirm-content">XXXXXX诊所</span>
+          </Col>
         </Row>
         <Row>
-          <Col span={12}>机构名称：XXXXXX口腔门诊部</Col>
+          <Col span={12} className="confirm-content-wrap">
+            <span className="confirm-label">机构名称：</span>
+            <span className="confirm-content">XXXXXX诊所</span>
+          </Col>
         </Row>
         <Row>
-          <Col span={24}>请确认您所输入的信息是否正确？</Col>
+          <Col span={24} className="confirm-message">请确认您所输入的信息是否正确？</Col>
         </Row>
+      </Modal>
+      <Modal
+        title={null}
+        visible={tipsVisible}
+        onOk={()=>{}}
+        onCancel={()=>{ setTipsVisible(false)}}
+        closable = {false}
+        centered
+        width={424}
+        footer={null}
+      >
+        <div className="tips-modal">
+          {!isSuccess&&<div className="tips-title-wrap">
+            <img src={warningSrc} alt=""/>
+            <span className="tips-title">提醒</span>
+          </div>}
+          <div className={isSuccess?"tips-content-success":"tips-content"}>当前营业执照已经存在一条申请正在审批中，不可重复提交，请您耐心等待审批结果，谢谢</div>
+          <div className="tips-footer">
+            {!isSuccess?<Button type="primary" onClick={()=>{setTipsVisible(false)}}>知道了</Button>:
+            <Button type="primary" onClick={()=>{history.push('/login')}}>返回登录页</Button>}
+          </div>
+        </div>
+        
       </Modal>
     </div>
   )
