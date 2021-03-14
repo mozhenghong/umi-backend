@@ -17,14 +17,14 @@ export default (props: any) => {
           </Col>
         </Row>
         <Row className="layout-main-wrap">
-          <Col span={3} className="nav-left">
+          <div className="nav-left">
             <NavLeftComponent />
-          </Col>
-          <Col span={21} className="mainWrap">
+          </div>
+          <div className="mainWrap">
             <Row className="main">
               {props.children}
             </Row>
-        </Col>
+        </div>
         </Row>
       </Row>
     </div>
