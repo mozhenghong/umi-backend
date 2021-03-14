@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Col, Row, Popover, Button, Modal, Form, Input, Dropdown, Menu } from 'antd';
 import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
-import styles from './index.less';
+import './index.less';
 import { history } from 'umi';
-import avator from '@/assets/login/logo.png';
+import logoSrc from '@/assets/login/logo.png';
+import avatorSrc from '@/assets/layout/avator.png';
+import serviceSrc from '@/assets/layout/service.png';
+
 import AddPatient from './component/addPatient/index';
 
 interface PatientItemProps{
@@ -21,24 +24,31 @@ const Index = (props: any) => {
   const [addPatientVisibe, setAddPatientVisibe] = useState(false);
 
   const content = (
-    <div>
-      <img src={avator} alt="" className={styles.avator} />
-      <div onClick={() => { setIsModalVisible(true) }}>11111111111修改密码</div>
-      <div onClick={() => { history.push('/login') }}>退出登录</div>
+    <div className="logout-wrap">
+      <div onClick={() => { setIsModalVisible(true) }} className="operation-wrap">
+        {/* <img src={changeSrc} alt=""/> */}
+        <div className="change-img-wrap"></div>
+        <span className="operation-content">修改密码</span>       
+      </div>
+      <div onClick={() => { history.push('/login') }} className="operation-wrap operation-logout-wrap" >
+        {/* <img src={logoutSrc} alt=""/> */}
+        <div className="logout-img-wrap"></div>
+        <span className="operation-content">退出登录</span>   
+      </div>
     </div>
   );
 
   const menu = (
     <Menu>
-    <div className={styles.dropDownWrap}>
-      <div className={styles.title}>找到30个患者</div>
-      <div className={styles.mainWrap}>
+    <div className="dropDownWrap">
+      <div className="title">找到30个患者</div>
+      <div className="mainWrap">
         {patientData.map((item) => {
           return (
-            <div className={styles.patientItem}>
+            <div className="patientItem">
             <Row>
               <Col span="24">
-                <img src={avator} alt=""/>
+                <img src={avatorSrc} alt=""/>
                 <span>{item.name}</span>
               </Col>
             </Row>
@@ -85,11 +95,13 @@ const Index = (props: any) => {
     }
   };
   return (
-    <div className={styles.header}>
-      <Row className={styles.headerTop}>
-        <Col span="4">
+    <div className="header">
+      <Row className="headerTop">
+        <Col span="6">
+          <img src={logoSrc} alt=""/>
+          <span className="web-name">智慧诊所平台</span>
         </Col>
-        <Col span="16" className={styles.searchwrap}>
+        <Col span="12" className="searchwrap">
           <Dropdown 
             overlay={menu} 
             placement="bottomCenter"  
@@ -98,9 +110,9 @@ const Index = (props: any) => {
             trigger={['click']}
           >
             <Input
-              prefix={<SearchOutlined className="site-form-item-icon" />}
+              style={{width: '224px'}}
+              suffix={<SearchOutlined style={{color:'#cccccc'}}/>}
               placeholder="请输入姓名/手机号"
-              style={{ width: '60%' }}
               allowClear
               onChange={(e) => {
                 console.log('inputchange')
@@ -141,6 +153,7 @@ const Index = (props: any) => {
             />
           </Dropdown>
           <Button 
+            className="add-patient-button"
             icon={<PlusOutlined />} 
             onClick={() => {
               setAddPatientVisibe(true)
@@ -149,9 +162,11 @@ const Index = (props: any) => {
             新增患者
           </Button>
         </Col>
-        <Col span="4" className={styles.headerItem}>
+        <Col span="6" className="headerItem">
+          <img src={serviceSrc} alt=""/>
+          <span className="service-title">客服</span>
           <Popover placement="bottomRight" content={content} title="" trigger="hover">
-            <img src={avator} alt="" className={styles.avator} />
+            <img src={avatorSrc} alt="" className="avator" />
           </Popover>
         </Col>
       </Row>
@@ -199,10 +214,10 @@ const Index = (props: any) => {
               }}
             />
           </Form.Item>
-          <div className={styles.pwdStrength}>
-            <span className={styles.weak}>低</span>
-            <span className={styles.middle} style={{ background: (strong === 2 || strong === 3) ? 'red' : '#fff' }}>中</span>
-            <span className={styles.strong} style={{ background: strong === 3 ? 'red' : '#fff' }}>高</span>
+          <div className="pwdStrength">
+            <span className="weak">低</span>
+            <span className="middle" style={{ background: (strong === 2 || strong === 3) ? 'red' : '#fff' }}>中</span>
+            <span className="strong" style={{ background: strong === 3 ? 'red' : '#fff' }}>高</span>
           </div>
           <Form.Item
             label="确认新密码"
