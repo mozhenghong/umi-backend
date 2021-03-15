@@ -10,11 +10,11 @@ import serviceSrc from '@/assets/layout/service.png';
 import AddPatient from './component/addPatient/index';
 
 const layout = {
-  labelCol: { span: 6 },
-  wrapperCol: { span: 18 },
+  labelCol: { span: 8},
+  wrapperCol: { span: 16 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 16, span: 8 },
+  wrapperCol: { offset: 18 ,span: 6 },
 };
 interface PatientItemProps {
   name: string,
@@ -24,7 +24,7 @@ interface PatientItemProps {
   caseNumber: string,
 }
 const Index = (props: any) => {
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [strong, setStrong] = useState(1);
   const [dropVisibe, setDropVisibe] = useState(false);
   const [patientData, setPatientData] = useState<PatientItemProps[]>([]);
@@ -183,12 +183,12 @@ const Index = (props: any) => {
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
-        width={500}
+        width={580}
       >
         <Form
           onFinish={onFinish}
           {...layout}
-          style={{ padding: '0 65px' }}
+          style={{ padding: '0 65px 0 0' }}
           size={'small'}
         >
           <Form.Item label="登录账号" >
@@ -226,7 +226,7 @@ const Index = (props: any) => {
               }}
             />
           </Form.Item>
-          <Form.Item label="" style={{marginTop:'-20px',paddingLeft:'82px'}}>
+          <Form.Item label="" style={{marginTop:'-20px',paddingLeft:'157px'}} className="pwdStrength-wrap">
             <div className="pwdStrength">
               <span className="weak" style={{ background: strong === 1? '#E67B7A' : '#EDECEC',color: strong === 1? 'rgba(255, 255, 255, 0.85)' : '#999999' }}>低</span>
               <span className="middle" style={{ background: strong === 2? '#568AFF' : '#EDECEC',color: strong === 2? 'rgba(255, 255, 255, 0.85)' : '#999999'}}>中</span>
@@ -253,9 +253,9 @@ const Index = (props: any) => {
           >
             <Input.Password placeholder="请确认新密码" />
           </Form.Item>
-          <Form.Item {...tailLayout}>
-            <Button onClick={() => { setIsModalVisible(false); }} style={{ marginRight: '10px' }}>取消</Button>
-            <Button type="primary" htmlType="submit" >确定</Button>
+          <Form.Item {...tailLayout}  style={{ marginRight: '-11px'}}>
+            <Button onClick={() => { setIsModalVisible(false); }} style={{ marginRight: '10px'}} >取消</Button>
+            <Button type="primary" htmlType="submit">确定</Button>
           </Form.Item>
         </Form>
       </Modal>

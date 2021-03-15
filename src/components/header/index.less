@@ -8,123 +8,150 @@
     height: 80px;
     line-height: 80px;
     padding: 0 160px;
-    .web-name{
+
+    .web-name {
       font-size: 22px;
       color: #568AFF;
       padding-left: 15px;
     }
+
     .headerItem {
       text-align: right;
-      .service-title{
+
+      .service-title {
         font-size: 16px;
         font-weight: 300;
         color: #568AFF;
         padding: 0 80px 0 6px;
       }
     }
-    .ant-dropdown{
+
+    .ant-dropdown {
       border: 1px solid #ddd;
       padding: 10px;
     }
-    .searchwrap{
+
+    .searchwrap {
       text-align: center;
-      .ant-btn{
+
+      .ant-btn {
         border: 1px dashed #dddddd;
         color: #666666;
       }
-      .add-patient-button{
+
+      .add-patient-button {
         margin-left: 30px;
       }
     }
   }
 }
 
-.pwdStrength {
-  // width: 100%;
-  display: flex;
-  flex: 1;
+.pwdStrength-wrap {
+  .ant-col-16 {
+    max-width: 100%;
+  }
+
+  .pwdStrength {
+    width: 100%;
+    display: flex;
+    flex: 1;
+  }
+
+  .weak,
+  .middle,
+  .strong {
+    display: inline-block;
+    width: 100px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #999999;
+    background: #EDECEC;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  .weak {
+    color: rgba(255, 255, 255, 0.85);
+    background: #E67B7A;
+    border-radius: 8px;
+  }
+
+  .middle,
+  .weak {
+    margin-right: 4px;
+  }
 }
 
-.weak,
-.middle,
-.strong {
-  display: inline-block;
-  width: 100px;
-  font-size: 12px;
-  font-weight: 400;
-  color: #999999;
-  background: #EDECEC;
-  text-align: center;
-  border-radius: 8px;
-}
-
-.weak {
-  color: rgba(255, 255, 255, 0.85);
-  background: #E67B7A;
-  border-radius: 8px;
-}
-
-.middle,
-.weak {
-  margin-right: 4px;
-}
-.dropDownWrap{
-  .title{
+.dropDownWrap {
+  .title {
     padding: 20px;
     border-bottom: 1px solid #ddd;
   }
-  img{
+
+  img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
   }
-  .mainWrap{
+
+  .mainWrap {
     max-height: 300px;
     overflow: scroll;
   }
-  .patientItem{
+
+  .patientItem {
     padding: 20px;
     border-bottom: 1px solid #ddd;
   }
 }
-.ant-popover-inner-content{
+
+.ant-popover-inner-content {
   padding: 0;
 }
-.ant-popover-arrow{
+
+.ant-popover-arrow {
   display: none;
 }
-.logout-wrap{
-  .operation-wrap{
+
+.logout-wrap {
+  .operation-wrap {
     display: flex;
     align-items: center;
     padding: 9px 30px;
     font-size: 14px;
-    color:#666666;
-    .operation-content{
+    color: #666666;
+
+    .operation-content {
       padding-left: 9px;
     }
-    .change-img-wrap{
+
+    .change-img-wrap {
       width: 13px;
       height: 14px;
       background: url('../../assets/layout/change.png');
     }
-    .logout-img-wrap{
+
+    .logout-img-wrap {
       width: 14px;
       height: 15px;
       background: url('../../assets/layout/logout.png');
     }
   }
-  .operation-wrap:hover{
+
+  .operation-wrap:hover {
     color: #568AFF;
     background: rgba(22, 119, 255, 0.1);
     cursor: pointer;
-    img{
+
+    img {
       color: #568AFF;
     }
-    .change-img-wrap{
+
+    .change-img-wrap {
       background: url('../../assets/layout/changeactive.png');
     }
-    .logout-img-wrap{
+
+    .logout-img-wrap {
       background: url('../../assets/layout/logoutactive.png');
     }
   }
