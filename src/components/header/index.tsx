@@ -9,7 +9,14 @@ import serviceSrc from '@/assets/layout/service.png';
 
 import AddPatient from './component/addPatient/index';
 
-interface PatientItemProps{
+const layout = {
+  labelCol: { span: 6 },
+  wrapperCol: { span: 18 },
+};
+const tailLayout = {
+  wrapperCol: { offset: 16, span: 8 },
+};
+interface PatientItemProps {
   name: string,
   mobile: string,
   age: string,
@@ -17,7 +24,7 @@ interface PatientItemProps{
   caseNumber: string,
 }
 const Index = (props: any) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(true);
   const [strong, setStrong] = useState(1);
   const [dropVisibe, setDropVisibe] = useState(false);
   const [patientData, setPatientData] = useState<PatientItemProps[]>([]);
@@ -28,48 +35,48 @@ const Index = (props: any) => {
       <div onClick={() => { setIsModalVisible(true) }} className="operation-wrap">
         {/* <img src={changeSrc} alt=""/> */}
         <div className="change-img-wrap"></div>
-        <span className="operation-content">修改密码</span>       
+        <span className="operation-content">修改密码</span>
       </div>
       <div onClick={() => { history.push('/login') }} className="operation-wrap operation-logout-wrap" >
         {/* <img src={logoutSrc} alt=""/> */}
         <div className="logout-img-wrap"></div>
-        <span className="operation-content">退出登录</span>   
+        <span className="operation-content">退出登录</span>
       </div>
     </div>
   );
 
   const menu = (
     <Menu>
-    <div className="dropDownWrap">
-      <div className="title">找到30个患者</div>
-      <div className="mainWrap">
-        {patientData.map((item) => {
-          return (
-            <div className="patientItem">
-            <Row>
-              <Col span="24">
-                <img src={avatorSrc} alt=""/>
-                <span>{item.name}</span>
-              </Col>
-            </Row>
-            <Row>
-              <Col span="12">
-                <span>{item.caseNumber}</span>
-              </Col>
-              <Col span="12">
-                <span>{item.mobile}</span>
-              </Col>
-            </Row>
-            <Row>
-              <Col span="24">
-                <span>{item.age}{`(${item.birth})`}</span>
-              </Col>
-            </Row>
-            </div>
-          )
-        })}
+      <div className="dropDownWrap">
+        <div className="title">找到30个患者</div>
+        <div className="mainWrap">
+          {patientData.map((item) => {
+            return (
+              <div className="patientItem">
+                <Row>
+                  <Col span="24">
+                    <img src={avatorSrc} alt="" />
+                    <span>{item.name}</span>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col span="12">
+                    <span>{item.caseNumber}</span>
+                  </Col>
+                  <Col span="12">
+                    <span>{item.mobile}</span>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col span="24">
+                    <span>{item.age}{`(${item.birth})`}</span>
+                  </Col>
+                </Row>
+              </div>
+            )
+          })}
+        </div>
       </div>
-    </div>
     </Menu>
   );
 
@@ -84,13 +91,13 @@ const Index = (props: any) => {
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
-  const handleVisibleChange = (flag:boolean)=> {
+  const handleVisibleChange = (flag: boolean) => {
     console.log(flag)
-    if(flag){
-      if(patientData.length){
+    if (flag) {
+      if (patientData.length) {
         setDropVisibe(flag);
       }
-    }else{
+    } else {
       setDropVisibe(flag)
     }
   };
@@ -98,20 +105,20 @@ const Index = (props: any) => {
     <div className="header">
       <Row className="headerTop">
         <Col span="6">
-          <img src={logoSrc} alt=""/>
+          <img src={logoSrc} alt="" />
           <span className="web-name">智慧诊所平台</span>
         </Col>
         <Col span="12" className="searchwrap">
-          <Dropdown 
-            overlay={menu} 
-            placement="bottomCenter"  
+          <Dropdown
+            overlay={menu}
+            placement="bottomCenter"
             visible={dropVisibe}
             onVisibleChange={handleVisibleChange}
             trigger={['click']}
           >
             <Input
-              style={{width: '224px'}}
-              suffix={<SearchOutlined style={{color:'#cccccc'}}/>}
+              style={{ width: '224px' }}
+              suffix={<SearchOutlined style={{ color: '#cccccc' }} />}
               placeholder="请输入姓名/手机号"
               allowClear
               onChange={(e) => {
@@ -152,9 +159,9 @@ const Index = (props: any) => {
               }}
             />
           </Dropdown>
-          <Button 
+          <Button
             className="add-patient-button"
-            icon={<PlusOutlined />} 
+            icon={<PlusOutlined />}
             onClick={() => {
               setAddPatientVisibe(true)
             }}
@@ -163,7 +170,7 @@ const Index = (props: any) => {
           </Button>
         </Col>
         <Col span="6" className="headerItem">
-          <img src={serviceSrc} alt=""/>
+          <img src={serviceSrc} alt="" />
           <span className="service-title">客服</span>
           <Popover placement="bottomRight" content={content} title="" trigger="hover">
             <img src={avatorSrc} alt="" className="avator" />
@@ -176,24 +183,29 @@ const Index = (props: any) => {
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
+        width={500}
       >
-        <div>登录账号：xxx</div>
         <Form
-          layout="vertical"
           onFinish={onFinish}
+          {...layout}
+          style={{ padding: '0 65px' }}
+          size={'small'}
         >
+          <Form.Item label="登录账号" >
+            <span>嘻嘻嘻</span>
+          </Form.Item>
           <Form.Item label="原密码" name="oldPassword">
             <Input.Password placeholder="请输入原密码" />
           </Form.Item>
           <Form.Item
             label="新密码"
             name="newPassword"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your password!',
-              },
-            ]}
+          // rules={[
+          //   {
+          //     required: true,
+          //     message: 'Please input your password!',
+          //   },
+          // ]}
           >
             <Input.Password
               placeholder="密码不少于6位且包含数字和字母"
@@ -214,19 +226,21 @@ const Index = (props: any) => {
               }}
             />
           </Form.Item>
-          <div className="pwdStrength">
-            <span className="weak">低</span>
-            <span className="middle" style={{ background: (strong === 2 || strong === 3) ? 'red' : '#fff' }}>中</span>
-            <span className="strong" style={{ background: strong === 3 ? 'red' : '#fff' }}>高</span>
-          </div>
+          <Form.Item label="" style={{marginTop:'-20px',paddingLeft:'82px'}}>
+            <div className="pwdStrength">
+              <span className="weak" style={{ background: strong === 1? '#E67B7A' : '#EDECEC',color: strong === 1? 'rgba(255, 255, 255, 0.85)' : '#999999' }}>低</span>
+              <span className="middle" style={{ background: strong === 2? '#568AFF' : '#EDECEC',color: strong === 2? 'rgba(255, 255, 255, 0.85)' : '#999999'}}>中</span>
+              <span className="strong" style={{ background: strong === 3 ? '#5EC8A0' : '#EDECEC',color: strong === 3? 'rgba(255, 255, 255, 0.85)' : '#999999'}}>高</span>
+            </div>
+          </Form.Item>
           <Form.Item
             label="确认新密码"
             name="confirmPassword"
             rules={[
-              {
-                required: true,
-                message: '请确认新密码!',
-              },
+              // {
+              //   required: true,
+              //   message: '请确认新密码!',
+              // },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue('newPassword') === value) {
@@ -239,15 +253,15 @@ const Index = (props: any) => {
           >
             <Input.Password placeholder="请确认新密码" />
           </Form.Item>
-          <Form.Item>
-            <Button onClick={() => { setIsModalVisible(false); }}>取消</Button>
+          <Form.Item {...tailLayout}>
+            <Button onClick={() => { setIsModalVisible(false); }} style={{ marginRight: '10px' }}>取消</Button>
             <Button type="primary" htmlType="submit" >确定</Button>
           </Form.Item>
         </Form>
       </Modal>
-      <AddPatient 
-        visible={addPatientVisibe} 
-        changeVisible={(visible:boolean) => {
+      <AddPatient
+        visible={addPatientVisibe}
+        changeVisible={(visible: boolean) => {
           setAddPatientVisibe(visible)
         }}
       />
