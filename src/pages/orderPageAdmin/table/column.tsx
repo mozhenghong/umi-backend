@@ -98,7 +98,9 @@ const columns = [
     key: 'operation',
     fixed: 'right',
     width: 100,
-    render: () => <a>action</a>,
+    render: () => {
+      <a>action</a>
+    },
   },
 ];
 export default columns
