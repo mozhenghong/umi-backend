@@ -1,40 +1,55 @@
 .orderPageWrap{
   width: 100%;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
   .tagWrap{
     display: flex;
     margin: 10px 0;
     .tagItem{
-      background: #fff;
-      border: 1px solid #ddd;
-      min-width: 150px;
-      margin-left: 10px;
-      padding: 10px;
-      img{
-        width: 20px;
-        height: 20px;
-      }
-      .row{
-        padding-top: 10px;
+      background: #FFFFFF;
+      border-radius: 2px;
+      min-width: 18%;
+      margin-left: 24px;
+      padding: 20px 11px;
+      display:flex;
+      align-items: center;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.45);
+      .tag-content{
+        font-size: 26px;
+        font-family: HelveticaNeue;
+        color: rgba(0, 0, 0, 0.85);
       }
     }
   }
   .searchWrap{
     width: 98%;
     background: #fff;
-    margin: 10px;
+    margin: 24px;
     padding: 20px 0 20px 20px;
   }
-  .tableTitleWrap{
+  .main-table-wrap{
+    background-color: #fff;
     width: 98%;
-    margin: 10px;
-    display: flex;
-    .tableTitle{
-      font-size: 18px;
-      padding-left: 5px;
-      border-left: 3px solid yellow;
+    margin-left: 24px;
+    padding: 17px 24px 47px 27px;
+    max-height: 67%;
+    .tableTitleWrap{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      .tableTitle{
+        font-size: 18px;
+      }
+      .add-order-button{
+        color: #40a9ff;
+        background: #fff;
+        border-color: #40a9ff;
+      }
     }
-  }
-  .tableWrap{
-    padding: 10px;
+    .tableWrap{
+    
+    }
   }
 }
