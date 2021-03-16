@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Form, Input, Button, DatePicker, Select, Space, Table } from 'antd';
+import { Row, Col, Form, Input, Button, DatePicker, Select, Space, Table, Tooltip } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import { ColumnsType } from 'antd/es/table';
 import './index.less';
 import moment from 'moment';
 import locale from 'antd/es/date-picker/locale/zh_CN';
@@ -10,7 +11,10 @@ import oneSrc from '@/assets/layout/one.png';
 import twoSrc from '@/assets/layout/two.png';
 import threeSrc from '@/assets/layout/three.png';
 import fourSrc from '@/assets/layout/four.png';
-
+interface OrderList{
+  key:number,
+  name: string
+}
 const OrderPage = () => {
   const [form] = Form.useForm();
   const [tableData, setTableData] = useState([])
@@ -32,7 +36,7 @@ const OrderPage = () => {
     setTableData(data)
   }, [])
 
-  const columns = [
+  const columns: ColumnsType<OrderList> = [
     {
       title: '姓名',
       width: 100,
@@ -88,6 +92,14 @@ const OrderPage = () => {
       dataIndex: 'address',
       key: '7',
       width: 150,
+      ellipsis: {
+        showTitle: false,
+      },
+      render: address => (
+        <Tooltip placement="topLeft" title={address}>
+          {address}
+        </Tooltip>
+      ),
     },
     {
       title: '接诊',
@@ -249,6 +261,7 @@ const OrderPage = () => {
             columns={columns}
             dataSource={tableData}
             scroll={{ x: 1500, y: 300 }}
+            bordered
             pagination={{
               // position: ['bottomCenter'],
               showSizeChanger: true,

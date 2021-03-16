@@ -6,6 +6,9 @@ import { history } from 'umi';
 import logoSrc from '@/assets/login/logo.png';
 import avatorSrc from '@/assets/layout/avator.png';
 import serviceSrc from '@/assets/layout/service.png';
+import caseSrc from '@/assets/layout/caseno.png';
+import mobileSrc from '@/assets/layout/mobile.png';
+
 
 import AddPatient from './component/addPatient/index';
 
@@ -26,7 +29,7 @@ interface PatientItemProps {
 const Index = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [strong, setStrong] = useState(1);
-  const [dropVisibe, setDropVisibe] = useState(false);
+  const [dropVisibe, setDropVisibe] = useState(true);
   const [patientData, setPatientData] = useState<PatientItemProps[]>([]);
   const [addPatientVisibe, setAddPatientVisibe] = useState(false);
 
@@ -55,21 +58,19 @@ const Index = (props: any) => {
               <div className="patientItem">
                 <Row>
                   <Col span="24">
-                    <img src={avatorSrc} alt="" />
-                    <span>{item.name}</span>
+                    <img src={caseSrc} alt="" />
+                    <span className="patientName">{item.name}</span>
+                    <span>{item.age}岁{`(${item.birth})`}</span>
                   </Col>
                 </Row>
-                <Row>
+                <Row style={{paddingTop: "9px"}}>
                   <Col span="12">
+                    <img src={caseSrc} alt=""/>
                     <span>{item.caseNumber}</span>
                   </Col>
                   <Col span="12">
+                    <img src={mobileSrc} alt=""/>
                     <span>{item.mobile}</span>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col span="24">
-                    <span>{item.age}{`(${item.birth})`}</span>
                   </Col>
                 </Row>
               </div>
@@ -194,18 +195,27 @@ const Index = (props: any) => {
           <Form.Item label="登录账号" >
             <span>嘻嘻嘻</span>
           </Form.Item>
-          <Form.Item label="原密码" name="oldPassword">
+          <Form.Item 
+            label="原密码" 
+            name="oldPassword"
+            rules={[
+              {
+                required: true,
+                message: '请输入原密码!',
+              },
+            ]}
+          >
             <Input.Password placeholder="请输入原密码" />
           </Form.Item>
           <Form.Item
             label="新密码"
             name="newPassword"
-          // rules={[
-          //   {
-          //     required: true,
-          //     message: 'Please input your password!',
-          //   },
-          // ]}
+            rules={[
+              {
+                required: true,
+                message: '请输入新密码!',
+              },
+            ]}
           >
             <Input.Password
               placeholder="密码不少于6位且包含数字和字母"
@@ -226,7 +236,7 @@ const Index = (props: any) => {
               }}
             />
           </Form.Item>
-          <Form.Item label="" style={{marginTop:'-20px',paddingLeft:'157px'}} className="pwdStrength-wrap">
+          <Form.Item label="" style={{marginTop:'-8px',paddingLeft:'157px'}} className="pwdStrength-wrap">
             <div className="pwdStrength">
               <span className="weak" style={{ background: strong === 1? '#E67B7A' : '#EDECEC',color: strong === 1? 'rgba(255, 255, 255, 0.85)' : '#999999' }}>低</span>
               <span className="middle" style={{ background: strong === 2? '#568AFF' : '#EDECEC',color: strong === 2? 'rgba(255, 255, 255, 0.85)' : '#999999'}}>中</span>
@@ -237,10 +247,10 @@ const Index = (props: any) => {
             label="确认新密码"
             name="confirmPassword"
             rules={[
-              // {
-              //   required: true,
-              //   message: '请确认新密码!',
-              // },
+              {
+                required: true,
+                message: '请确认新密码!',
+              },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue('newPassword') === value) {
