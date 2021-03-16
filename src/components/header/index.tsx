@@ -8,16 +8,17 @@ import avatorSrc from '@/assets/layout/avator.png';
 import serviceSrc from '@/assets/layout/service.png';
 import caseSrc from '@/assets/layout/caseno.png';
 import mobileSrc from '@/assets/layout/mobile.png';
+import defaultAvatorSrc from '@/assets/layout/defaultAvator.png'
 
 
 import AddPatient from './component/addPatient/index';
 
 const layout = {
-  labelCol: { span: 8},
+  labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 18 ,span: 6 },
+  wrapperCol: { offset: 18, span: 6 },
 };
 interface PatientItemProps {
   name: string,
@@ -29,7 +30,7 @@ interface PatientItemProps {
 const Index = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [strong, setStrong] = useState(1);
-  const [dropVisibe, setDropVisibe] = useState(true);
+  const [dropVisibe, setDropVisibe] = useState(false);
   const [patientData, setPatientData] = useState<PatientItemProps[]>([]);
   const [addPatientVisibe, setAddPatientVisibe] = useState(false);
 
@@ -57,25 +58,28 @@ const Index = (props: any) => {
             return (
               <div className="patientItem">
                 <Row>
-                  <Col span="24">
-                    <img src={caseSrc} alt="" />
-                    <span className="patientName">{item.name}</span>
-                    <span>{item.age}岁{`(${item.birth})`}</span>
+                  <Col span="24" style={{ display: 'flex', alignItems: 'center' }}>
+                    <img src={defaultAvatorSrc} alt="" />
+                    <span className="patient-name">{item.name}</span>
+                    <span className="patient-age">{item.age}岁{`(${item.birth})`}</span>
                   </Col>
                 </Row>
-                <Row style={{paddingTop: "9px"}}>
-                  <Col span="12">
-                    <img src={caseSrc} alt=""/>
+                <Row style={{ paddingTop: "9px" }}>
+                  <Col span="12" style={{ display: 'flex', alignItems: 'center' }}>
+                    <img src={caseSrc} alt="" />
                     <span>{item.caseNumber}</span>
                   </Col>
-                  <Col span="12">
-                    <img src={mobileSrc} alt=""/>
+                  <Col span="12" style={{ display: 'flex', alignItems: 'center' }}>
+                    <img src={mobileSrc} alt="" />
                     <span>{item.mobile}</span>
                   </Col>
                 </Row>
               </div>
             )
           })}
+          <div className="footer">
+            显示更多…
+        </div>
         </div>
       </div>
     </Menu>
@@ -93,7 +97,6 @@ const Index = (props: any) => {
     console.log('Received values of form: ', values);
   };
   const handleVisibleChange = (flag: boolean) => {
-    console.log(flag)
     if (flag) {
       if (patientData.length) {
         setDropVisibe(flag);
@@ -195,8 +198,8 @@ const Index = (props: any) => {
           <Form.Item label="登录账号" >
             <span>嘻嘻嘻</span>
           </Form.Item>
-          <Form.Item 
-            label="原密码" 
+          <Form.Item
+            label="原密码"
             name="oldPassword"
             rules={[
               {
@@ -236,11 +239,11 @@ const Index = (props: any) => {
               }}
             />
           </Form.Item>
-          <Form.Item label="" style={{marginTop:'-8px',paddingLeft:'157px'}} className="pwdStrength-wrap">
+          <Form.Item label="" style={{ marginTop: '-8px', paddingLeft: '157px' }} className="pwdStrength-wrap">
             <div className="pwdStrength">
-              <span className="weak" style={{ background: strong === 1? '#E67B7A' : '#EDECEC',color: strong === 1? 'rgba(255, 255, 255, 0.85)' : '#999999' }}>低</span>
-              <span className="middle" style={{ background: strong === 2? '#568AFF' : '#EDECEC',color: strong === 2? 'rgba(255, 255, 255, 0.85)' : '#999999'}}>中</span>
-              <span className="strong" style={{ background: strong === 3 ? '#5EC8A0' : '#EDECEC',color: strong === 3? 'rgba(255, 255, 255, 0.85)' : '#999999'}}>高</span>
+              <span className="weak" style={{ background: strong === 1 ? '#E67B7A' : '#EDECEC', color: strong === 1 ? 'rgba(255, 255, 255, 0.85)' : '#999999' }}>低</span>
+              <span className="middle" style={{ background: strong === 2 ? '#568AFF' : '#EDECEC', color: strong === 2 ? 'rgba(255, 255, 255, 0.85)' : '#999999' }}>中</span>
+              <span className="strong" style={{ background: strong === 3 ? '#5EC8A0' : '#EDECEC', color: strong === 3 ? 'rgba(255, 255, 255, 0.85)' : '#999999' }}>高</span>
             </div>
           </Form.Item>
           <Form.Item
@@ -263,8 +266,8 @@ const Index = (props: any) => {
           >
             <Input.Password placeholder="请确认新密码" />
           </Form.Item>
-          <Form.Item {...tailLayout}  style={{ marginRight: '-11px'}}>
-            <Button onClick={() => { setIsModalVisible(false); }} style={{ marginRight: '10px'}} >取消</Button>
+          <Form.Item {...tailLayout} style={{ marginRight: '-11px' }}>
+            <Button onClick={() => { setIsModalVisible(false); }} style={{ marginRight: '10px' }} >取消</Button>
             <Button type="primary" htmlType="submit">确定</Button>
           </Form.Item>
         </Form>

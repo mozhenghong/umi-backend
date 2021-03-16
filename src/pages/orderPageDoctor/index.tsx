@@ -11,8 +11,15 @@ import oneSrc from '@/assets/layout/one.png';
 import twoSrc from '@/assets/layout/two.png';
 import threeSrc from '@/assets/layout/three.png';
 import fourSrc from '@/assets/layout/four.png';
-interface OrderList{
-  key:number,
+import editSrc from '@/assets/orderPageDoctor/edit.png';
+import disabledSrc from '@/assets/orderPageDoctor/disabled.png';
+import compoleteSrc from '@/assets/orderPageDoctor/compolete.png';
+
+import ReceptionModal from './component/reception/index';
+import TransferModal from './component/transfer/index'
+
+interface OrderList {
+  key: number,
   name: string
 }
 const OrderPage = () => {
@@ -22,7 +29,12 @@ const OrderPage = () => {
   const [pageSize, setPageSize] = useState(10)
   const [pageTotal, setPageTotal] = useState(100)
   const [addOrderVisibe, setAddOrderVisibe] = useState(false)
+  const [receptionVisibe, setReceptionVisibe] = useState(false)
+  const [transferVisibe, setTransferVisibe] = useState(false)
+  const [receptionRecord, setReceptionRecord] = useState({})
+  const [transferRecord, setTransferRecord] = useState({})
 
+  
   useEffect(() => {
     const data = []
     for (let i = 0; i < 100; i++) {
@@ -85,13 +97,13 @@ const OrderPage = () => {
       title: '就诊状态',
       dataIndex: 'address',
       key: '6',
-      width: 150,
+      width: 100,
     },
     {
       title: '备注',
       dataIndex: 'address',
       key: '7',
-      width: 150,
+      width: 100,
       ellipsis: {
         showTitle: false,
       },
@@ -105,49 +117,105 @@ const OrderPage = () => {
       title: '接诊',
       dataIndex: 'address',
       key: '7',
-      width: 150,
-    },
-    {
-      title: '检查',
-      dataIndex: 'address',
-      key: '7',
-      width: 150,
+      width: 100,
+      align: 'center',
+      render: (record) => {
+        return (
+          <img
+            src={editSrc}
+            alt=""
+            onClick={() => {
+              setReceptionRecord(record)
+              setReceptionVisibe(true)
+            }}
+          />
+        )
+      }
     },
     {
       title: '转诊',
       dataIndex: 'address',
       key: '7',
-      width: 150,
+      width: 100,
+      align: 'center',
+      render: (record) => {
+        return (
+          <img
+            src={editSrc}
+            alt=""
+            onClick={() => {
+              setTransferRecord(record)
+              setTransferVisibe(true)
+            }}
+          />
+        )
+      }
     },
     {
       title: '收费',
       dataIndex: 'address',
       key: '7',
-      width: 150,
+      width: 100,
+      align: 'center',
+      render: (record) => {
+        return (
+          <img
+            src={compoleteSrc}
+            alt=""
+            onClick={() => {
+              console.log(record)
+            }}
+          />
+        )
+      }
     },
     {
       title: '病例',
       dataIndex: 'address',
       key: '7',
-      width: 150,
+      width: 100,
+      align: 'center',
+      render: (record) => {
+        return (
+          <img
+            src={compoleteSrc}
+            alt=""
+            onClick={() => {
+              console.log(record)
+            }}
+          />
+        )
+      }
     },
     {
       title: '预约',
       dataIndex: 'address',
       key: '7',
-      width: 150,
+      width: 100,
+      align: 'center',
+      render: (record) => {
+        return (
+          <img
+            src={compoleteSrc}
+            alt=""
+            onClick={() => {
+              console.log(record)
+            }}
+          />
+        )
+      }
     },
     {
       title: '治疗完成',
       dataIndex: 'address',
       key: '7',
-      width: 150,
+      width: 100,
+      align: 'center',
       render: (record) => {
         return (
-          <img 
-            src={logoSrc} 
-            alt="" 
-            style={{width: 20, height: 20}}
+          <img
+            src={compoleteSrc}
+            alt=""
             onClick={() => {
               console.log(record)
             }}
@@ -278,6 +346,12 @@ const OrderPage = () => {
           />
         </div>
       </div>
+      <ReceptionModal visible={receptionVisibe} record={receptionRecord} changeVisible={(visible: boolean) => {
+        setReceptionVisibe(visible)
+      }} />
+       <TransferModal visible={transferVisibe} record={transferRecord} changeVisible={(visible: boolean) => {
+        setTransferVisibe(visible)
+      }} />
     </div>
   )
 }

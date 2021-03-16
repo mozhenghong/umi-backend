@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Col, Row, Button, Modal, Form, Input, Select, Upload, DatePicker, Radio, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import styles from './index.less';
+import avatorSrc from '@/assets/layout/uploadAvator.png'
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  labelCol: { span: 5 },
+  wrapperCol: { span: 19 },
+};
+const inlineLayout = {
+  labelCol: { span: 10},
+  wrapperCol: { span: 14},
 };
 
 function getBase64(img: any, callback: Function) {
@@ -53,7 +58,7 @@ const AddPatient: React.FC<Visible> = (props) => {
     console.log('Rregister', values);
   };
 
-  const handleChange = (info:any) => {
+  const handleChange = (info: any) => {
     if (info.file.status === 'uploading') {
       setLoading(true)
       return;
@@ -68,8 +73,9 @@ const AddPatient: React.FC<Visible> = (props) => {
   };
   const uploadButton = (
     <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>Upload</div>
+      {/* {loading ? <LoadingOutlined /> : <PlusOutlined />}
+      <div style={{ marginTop: 8 }}>Upload</div> */}
+      {loading?<LoadingOutlined /> :<img src={avatorSrc} alt=""/>}
     </div>)
   return (
     <Modal
@@ -77,7 +83,7 @@ const AddPatient: React.FC<Visible> = (props) => {
       visible={isModalVisible}
       onOk={handleOk}
       onCancel={handleCancel}
-      width={900}
+      width={960}
       footer={
         <div>
           <Button onClick={() => { changeVisible(false) }}>取消</Button>
@@ -89,14 +95,14 @@ const AddPatient: React.FC<Visible> = (props) => {
       <div className={styles.wrap}>
         <div className={styles.title}>个人信息</div>
         <div className={styles.detail}>
-          <Form 
-            form={form} 
-            name="add-patient" 
-            onFinish={onFinish} 
+          <Form
+            form={form}
+            name="add-patient"
+            onFinish={onFinish}
             {...layout}
             initialValues={{
               'name': 'llllll',
-              'sex':'b',
+              'sex': 'b',
             }}
           >
             <Row>
@@ -118,14 +124,14 @@ const AddPatient: React.FC<Visible> = (props) => {
                   label="出生日期"
                   name="year"
                 >
-                  <DatePicker />
+                  <DatePicker style={{ width: '100%' }}  />
                 </Form.Item>
                 <Form.Item label="年龄" style={{ display: 'flex' }}>
                   <Form.Item
                     name="picNum"
                     noStyle
                   >
-                    <Input disabled style={{ width: '70%' }} placeholder="请输入验证码" />
+                    <Input disabled style={{ width: '85%' }} placeholder="请输入验证码" />
                   </Form.Item>
                   <span>
                     未成年
@@ -138,22 +144,11 @@ const AddPatient: React.FC<Visible> = (props) => {
                   <Input placeholder="请输入姓名" />
                 </Form.Item>
               </Col>
-              <Col span="7">
+              <Col span="12">
                 <Form.Item
-                  label="性别 "
-                  name="sex"
-                >
-                  <Radio.Group>
-                    <Radio value="a">男</Radio>
-                    <Radio value="b">女</Radio>
-                    <Radio value="c">未知</Radio>
-                  </Radio.Group>
-                </Form.Item>
-              </Col>
-              <Col span="3">
-                <Form.Item
-                  label=""
+                  label="头像"
                   name="avator"
+                  {...inlineLayout}
                 >
                   <Upload
                     name="avatar"
@@ -164,8 +159,19 @@ const AddPatient: React.FC<Visible> = (props) => {
                     beforeUpload={beforeUpload}
                     onChange={handleChange}
                   >
-                    {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+                    {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%', borderRadius: '50%' }} /> : uploadButton}
                   </Upload>
+                </Form.Item>
+                <Form.Item
+                  label="性别 "
+                  name="sex"
+                  {...inlineLayout}
+                >
+                  <Radio.Group>
+                    <Radio value="a">男</Radio>
+                    <Radio value="b">女</Radio>
+                    <Radio value="c">未知</Radio>
+                  </Radio.Group>
                 </Form.Item>
               </Col>
             </Row>
@@ -201,42 +207,43 @@ const AddPatient: React.FC<Visible> = (props) => {
                 </Form.Item>
               </Col>
             </Row>
-            <Row style={{ display: 'flex' }}>
-              <Col span="8">
-                <Form.Item
-                  name="provience"
-                  label="家庭住址"
-                >
-                  <Select>
+            <Row style={{marginLeft:'-18px'}}>
+              <Col span="7">
+              <Form.Item
+                name="provience"
+                label="家庭住址"
+                {...inlineLayout}
+              >
+                  <Select style={{ width: 120}}>
                     <Select.Option value="demo">Demo</Select.Option>
                   </Select>
                 </Form.Item>
-              </Col>
-              <Col span="4">
+                </Col>
+                <Col span="4">
                 <Form.Item
                   name="city"
                 >
-                  <Select>
+                  <Select style={{ width: 120}}>
                     <Select.Option value="demo">Demo</Select.Option>
                   </Select>
                 </Form.Item>
-              </Col>
-              <Col span="4">
+                </Col>
+                <Col span="4">
                 <Form.Item
                   name="area"
                 >
-                  <Select>
+                  <Select style={{ width: 120 }}>
                     <Select.Option value="demo">Demo</Select.Option>
                   </Select>
                 </Form.Item>
-              </Col>
-              <Col span="8">
+                </Col>
+                <Col span="9">
                 <Form.Item
                   name="address"
                 >
-                  <Input placeholder="请输入" />
+                  <Input placeholder="请输入" style={{ width: 320 }} />
                 </Form.Item>
-              </Col>
+                </Col>
             </Row>
             <div className={styles.title}>首诊信息</div>
             <Row>
@@ -245,7 +252,7 @@ const AddPatient: React.FC<Visible> = (props) => {
                   label="初诊日期"
                   name="firstDate"
                 >
-                  <DatePicker />
+                  <DatePicker style={{ width: '100%' }} />
                 </Form.Item>
                 <Form.Item
                   label="责任医生"
