@@ -150,7 +150,7 @@ const registerPage = () => {
             <Search
               className="search"
               placeholder="请输入短信中的验证码"
-              enterButton={enterGetCode?<span style={{color: '#D9D9D9'}}>{count}s后重发</span>:<span onClick={handleGetCode}>获取验证码</span>}
+              enterButton={enterGetCode?<span style={{color: '#D9D9D9',padding: '0 8px'}}>{count}s后重发</span>:<span onClick={handleGetCode}>获取验证码</span>}
               onSearch={(value) => { console.log(value)}}
             />
             </Form.Item>
