@@ -328,7 +328,7 @@ const OrderPage = () => {
           <Table
             columns={columns}
             dataSource={tableData}
-            scroll={{ x: 1500, y: 300 }}
+            scroll={{ x: 1500, y: 240 }}
             bordered
             pagination={{
               // position: ['bottomCenter'],

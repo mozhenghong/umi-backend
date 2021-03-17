@@ -6,6 +6,8 @@ import './index.less';
 import MenuConfig from '@/config/menuConfig';
 import { history } from 'umi';
 
+import avator from'@/assets/layout/avator.png';
+
 const { SubMenu } = Menu;
 
 const Index = (props: any) => {
@@ -23,7 +25,7 @@ const Index = (props: any) => {
           )
         }
         return <Menu.Item title={item.title} key={item.key}
-          icon={<AppstoreOutlined />}
+          icon={<img src={item.icon} />}
           onClick={() => {
             history.push(item.key);
           }}>
@@ -37,9 +39,11 @@ const Index = (props: any) => {
   return (
     <div className="wrapper">
       <div className="logo">
-        <h1>系统</h1>
+        <img src={avator} alt=""/>
+        <div className="name">马冬梅</div>
+        <div>什么梅</div>
       </div>
-      <Menu className="menu" theme="dark" defaultOpenKeys={['/admin']} mode="inline">
+      <Menu className="menu" theme="dark" defaultOpenKeys={['/orderPage']} mode="inline">
         {menuTreeNode}
       </Menu>
     </div>

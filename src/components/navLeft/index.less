@@ -1,23 +1,32 @@
-.wrapper{
-    min-height: 92vh;
+.wrapper {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+
+  .menu {
+    flex-grow: 1;
+  }
+
+  .logo {
+    background-color: #576285;
+    padding: 16px 0 20px 0;
     display: flex;
     flex-direction: column;
-    .menu{
-        flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+
+    .name {
+      font-size: 16px;
+      padding-top: 10px;
     }
-    .logo{
-        line-height: 100px;
-        padding-left: 20px;
-        background-color: #002140;
-        img{
-            height: 45px;
-        }
-        h1{
-            color: #ffffff;
-            font-size: 25px;
-            display: inline-block;
-            vertical-align: center;
-            margin: 0 0 0 10px;
-        }
-    }
+  }
+  .ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub{
+    background-color: #576285;
+  }
+  .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color: #323E65;
+  }
 }

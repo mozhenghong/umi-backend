@@ -1,12 +1,15 @@
+import plantformIcon from '@/assets/layout/plantformIcon.png'
 
 const menuList = [
     {
       title: "工作台",
       key: '/orderPage',
+      icon:plantformIcon
     }, 
     {
       title: "工作台医生",
       key: '/orderPageDoctor',
+      icon:plantformIcon
     },  
     {
         title: "首页",

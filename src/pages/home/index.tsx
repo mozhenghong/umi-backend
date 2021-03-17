@@ -9,13 +9,13 @@ export default function IndexPage() {
       <h1 className={styles.title}>home</h1>
       <Button onClick ={
             () => {
-                history.push('/page2');
-                // history.push({
-                //     pathname: '/page2',
-                //     query: {
-                //         a: 'b',
-                //     },
-                // });
+                // history.push('/page1');
+                history.push({
+                    pathname: '/page1',
+                    query: {
+                        a: 'b',
+                    },
+                });
                 // getInfo({}).then((res) =>{
                     
                 // })
