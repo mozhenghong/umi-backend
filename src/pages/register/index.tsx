@@ -36,6 +36,8 @@ const registerPage = () => {
   const [visible, setVisible] = useState(false)
   const [tipsVisible, setTipsVisible] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [enterGetCode, setEnterGetCode] = useState(false)
+  const [count, setCount] = useState(10)
 
 
   const onFinish = (values: any) => {
@@ -67,6 +69,21 @@ const registerPage = () => {
       <div style={{ marginTop: 8 }}>Upload</div>
     </div>
   );
+  const handleGetCode = () =>{
+    setEnterGetCode(true)
+    const timer = setInterval(() => {
+      setEnterGetCode(true)
+      setCount((count)=>{
+        if (count === 0) {
+          clearInterval(timer);
+          setEnterGetCode(false)
+          setCount(10)
+        }
+        return --count
+      })
+    }, 1000);
+  }
+
   return (
     <div className="register-wrap">
       <div className="title">
@@ -133,8 +150,8 @@ const registerPage = () => {
             <Search
               className="search"
               placeholder="请输入短信中的验证码"
-              enterButton="获取验证码"
-              onSearch={(value) => { console.log(value) }}
+              enterButton={enterGetCode?<span style={{color: '#D9D9D9'}}>{count}s后重发</span>:<span onClick={handleGetCode}>获取验证码</span>}
+              onSearch={(value) => { console.log(value)}}
             />
             </Form.Item>
           }
